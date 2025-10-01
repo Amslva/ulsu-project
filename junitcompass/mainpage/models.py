@@ -16,7 +16,8 @@ class Profession(models.Model):
     content = models.TextField(blank=True)
     time_create = models.DateTimeField(auto_now_add=True)
     time_update = models.DateTimeField(auto_now=True)
-    is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
+    is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
+                                       default=Status.DRAFT, verbose_name="Статус")
     cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='prof')
 
 
@@ -27,6 +28,8 @@ class Profession(models.Model):
         return self.title
 
     class Meta:
+        verbose_name = 'Специальность'
+        verbose_name_plural = 'Специальности'
         ordering = ['-time_create']
         indexes = [
             models.Index(fields=['-time_create']),
@@ -45,4 +48,8 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('category', kwargs={'cat_slug': self.slug})
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
