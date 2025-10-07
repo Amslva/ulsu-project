@@ -6,7 +6,6 @@ from mainpage.models import Profession, Category
 
 menu = [{'title': "Главная страница", 'url_name': 'home'},
     {'title': "Перейти к аналитике", 'url_name': 'stats'},
-        {'title': "Войти", 'url_name': 'login'}
 ]
 
 
@@ -37,7 +36,6 @@ class ShowPost(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = context['post'].title
-        context['menu'] = menu
         return context
     def det_object(self, post):
         return get_object_or_404(Profession.published, slug=self.kwargs[self.slug_url_kwarg])
@@ -55,7 +53,6 @@ class ShowCategory(ListView):
         context = super().get_context_data(**kwargs)
         cat = context['posts'][0].cat
         context['title'] = 'Категория - ' + cat.name
-        context['menu'] = menu
         context['cat_selected'] = cat.pk
         return context
 
