@@ -24,10 +24,6 @@ def analyze (request):
     return render(request, 'mainpage/analyze.html', {'title': 'Analyze', 'menu': menu})
 
 
-def login(request):
-    return HttpResponse("Авторизация")
-
-
 class ShowPost(DetailView):
     model = Profession
     template_name = 'mainpage/post.html'
