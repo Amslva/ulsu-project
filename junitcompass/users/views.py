@@ -1,9 +1,10 @@
 from django.contrib.auth import  logout
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import  HttpResponseRedirect
+from django.shortcuts import render
 from django.urls import reverse
 
-from users.forms import LoginUserForm
+from users.forms import LoginUserForm, RegisterUserForm
 
 
 class LoginUser(LoginView):
@@ -11,3 +12,14 @@ class LoginUser(LoginView):
     template_name = 'users/login.html'
     extra_context = {'title': 'Авторизация'}
 
+def register(request):
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return render(request, 'users/register_done.html')
+    else:
+        form = RegisterUserForm()
+    return render(request, 'users/register.html', {'form': form})
