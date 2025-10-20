@@ -22,7 +22,8 @@
                             <li class="last">
                                 <form action="{% url 'users:logout' %}" method="post">
                                     {% csrf_token %}
-                                    <button type="submit">Log out</button>
+                                     <a href="{% url 'users:profile' %}">{{user.username}}</a> |
+                                     <button type="submit">Выйти</button>
                                 </form>
                             </li>
                             {% else %}
