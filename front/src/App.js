@@ -1,12 +1,27 @@
 import React from 'react';
-import MainPage from './pages/MainPage';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import CategoryPage from './pages/CategoryPage';
+import PostPage from './pages/PostPage';
+import AnalyzePage from './pages/AnalyzePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import './styles/main.css';
 
 function App() {
   return (
-    <div className="App">
-      <MainPage />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/category/:catSlug" element={<CategoryPage />} />
+          <Route path="/post/:slug" element={<PostPage />} />
+          <Route path="/stats" element={<AnalyzePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
