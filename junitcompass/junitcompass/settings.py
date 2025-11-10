@@ -1,4 +1,5 @@
 from pathlib import Path
+from datetime import timedelta
 
 from django.conf.global_settings import EMAIL_HOST, EMAIL_HOST_PASSWORD
 
@@ -26,11 +27,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'mainpage.apps.MainpageConfig',
-    'users',
     'debug_toolbar',
+
     'rest_framework',
     'corsheaders',
+    'rest_framework_simplejwt',
+
+    'mainpage',
+
 ]
 
 MIDDLEWARE = [
@@ -50,16 +54,13 @@ ROOT_URLCONF = 'junitcompass.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR   / 'templates',
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'users.context_processors.get_menu_context',
             ],
         },
     },
@@ -67,20 +68,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'junitcompass.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'main_db.sqlite3',
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,9 +91,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
@@ -109,36 +99,44 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-STATIC_URL = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
-LOGIN_URL = 'users:login'
-LOGOUT_URL = 'users:logout'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'users.authentication.EmailAuthBackend',
 ]
-EMAIl_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = "smtp.yandex.ru"
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "junitcompass@yandex.ru"
-EMAIL_HOST_PASSWORD = "nhtwhvzkubrbqojd"
-EMAIL_USE_SSL = True
-
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-SERVER_EMAIL = EMAIL_HOST_USER
-EMAIL_ADMIN = EMAIL_HOST_USER
+# EMAIl_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = "smtp.yandex.ru"
+# EMAIL_PORT = 465
+# EMAIL_HOST_USER = "junitcompass@yandex.ru"
+# EMAIL_HOST_PASSWORD = "nhtwhvzkubrbqojd"
+# EMAIL_USE_SSL = True
+#
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# SERVER_EMAIL = EMAIL_HOST_USER
+# EMAIL_ADMIN = EMAIL_HOST_USER
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}

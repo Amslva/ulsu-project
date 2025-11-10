@@ -32,24 +32,26 @@ class ProfessionListAPI(APIView):
         ]
         return Response(data)
 
-#temporary
 class ProfessionByCategoryAPI(APIView):
     def get(self, request, category_id):
-        professions = Profession.objects.filter(cat_id=category_id, is_published=True)
-        data = [
-            {
-                'id': prof.id,
-                'title': prof.title,
-                'slug': prof.slug,
-                'cat_id': prof.cat_id
-            }
-            for prof in professions
-        ]
-        return Response(data)
+        try:
+            professions = Profession.objects.filter(cat_id=category_id, is_published=True)
+            data = [
+                {
+                    'id': prof.id,
+                    'title': prof.title,
+                    'slug': prof.slug,
+                    'cat_id': prof.cat_id,
+                    'cat_name': prof.cat.name
+                }
+                for prof in professions
+            ]
+            return Response(data)
+        except Exception as e:
+            return Response({'error': str(e)}, status=400)
 
 class AnalyticsStatsAPI(APIView):
     def get(self, request):
-
         data = {
             'top_languages': [
                 {'name': 'Python', 'count': 45},
