@@ -5,6 +5,60 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import update_session_auth_hash
+
+class ChangePasswordAPI(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        user = request.user
+        data = request.data
+        
+        current_password = data.get('current_password')
+        new_password = data.get('new_password')
+        confirm_password = data.get('confirm_password')
+
+        # Валидация
+        if not current_password:
+            return Response(
+                {'error': 'Текущий пароль обязателен'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        if not new_password:
+            return Response(
+                {'error': 'Новый пароль обязателен'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        if not confirm_password:
+            return Response(
+                {'error': 'Подтверждение пароля обязательно'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Проверяем текущий пароль
+        if not user.check_password(current_password):
+            return Response(
+                {'error': 'Текущий пароль неверен'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Проверяем что новые пароли совпадают
+        if new_password != confirm_password:
+            return Response(
+                {'error': 'Новые пароли не совпадают'}, 
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        # Устанавливаем новый пароль
+        user.set_password(new_password)
+        user.save()
+        
+        # Обновляем сессию аутентификации (для админки)
+        update_session_auth_hash(request, user)
+        
+        return Response({'message': 'Пароль успешно изменен'})
 
 
 class RegisterAPI(APIView):

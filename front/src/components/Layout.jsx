@@ -62,37 +62,42 @@ export default function Layout({ children, categories = [] }) {
 
           <div className="user-info">
             {user ? (
-              <>
-                <span>Привет, {getUserName()}!</span>
-                <button onClick={handleLogout} className="logout-btn">
-                  Выйти
-                </button>
-              </>
+              <div className="user-menu">
+                <span className="user-greeting">Привет, {getUserName()}!</span>
+                <div className="user-actions">
+                  <Link to="/change-password" className="change-password-link">
+                    Сменить пароль
+                  </Link>
+                  <button onClick={handleLogout} className="logout-btn">
+                    Выйти
+                  </button>
+                </div>
+              </div>
             ) : (
-              <>
+              <div className="auth-links">
                 <Link to="/login">Войти</Link>
                 <Link to="/register">Регистрация</Link>
-              </>
+              </div>
             )}
           </div>
         </div>
       </header>
 
       <div className="main-content">
-            <aside className="sidebar">
-              <h3>Категории</h3>
-              <nav>
-                {categories && categories.map(cat => (
-                  <Link
-                    key={cat.id}
-                    to={`/category/${cat.slug}`}
-                    className="category-link"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </nav>
-            </aside>
+        <aside className="sidebar">
+          <h3>Категории</h3>
+          <nav>
+            {categories && categories.map(cat => (
+              <Link
+                key={cat.id}
+                to={`/category/${cat.slug}`}
+                className="category-link"
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </nav>
+        </aside>
 
         <main className="content">
           {children}

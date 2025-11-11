@@ -106,3 +106,138 @@
   border-radius: 4px;
   color: #cc0000;
 }
+
+/* Стили для меню пользователя */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-greeting {
+  color: #fdc073;
+  font-weight: 500;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.change-password-link {
+  color: #fdc073;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #fdc073;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.change-password-link:hover {
+  background-color: #fdc073;
+  color: #333;
+  text-decoration: none;
+}
+
+.logout-btn {
+  background: transparent;
+  color: #fdc073;
+  border: 1px solid #fdc073;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #fdc073;
+  color: #333;
+}
+
+.auth-links {
+  display: flex;
+  gap: 15px;
+}
+
+.auth-links a {
+  color: #fdc073;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #fdc073;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.auth-links a:hover {
+  background-color: #fdc073;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .user-menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .user-actions {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .auth-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Стили для детальной страницы профессии */
+.profession-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profession-meta {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.profession-content {
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.profession-content h2 {
+  color: #333;
+  border-bottom: 2px solid #9fa1d4;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.profession-content p {
+  font-size: 16px;
+  color: #444;
+}
+
+.profession-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.back-link {
+  color: #0059b2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  color: #CC0000;
+  text-decoration: underline;
+}

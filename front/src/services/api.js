@@ -1,5 +1,22 @@
 import { API_BASE } from '../utils/constants';
 
+export const changePassword = async (currentPassword, newPassword, confirmPassword) => {
+  const response = await fetch(`${API_BASE}/auth/change-password/`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: JSON.stringify({
+      current_password: currentPassword,
+      new_password: newPassword,
+      confirm_password: confirmPassword
+    }),
+  });
+
+  return handleResponse(response);
+};
+
+export const fetchProfessionBySlug = (slug) =>
+  fetch(`${API_BASE}/professions/${slug}/`).then(handleResponse);
+
 const handleResponse = async (response) => {
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
