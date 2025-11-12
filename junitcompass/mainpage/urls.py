@@ -1,7 +1,6 @@
 from django.urls import path
 from .api import views as api_views
-from .api.auth_views import RegisterAPI, LoginAPI, LogoutAPI, UserProfileAPI
-from .api.auth_views import ChangePasswordAPI
+from .api.auth_views import RegisterAPI, LoginAPI, LogoutAPI, UserProfileAPI, ChangePasswordAPI, UserAvatarAPI
 
 urlpatterns = [
     path('categories/', api_views.CategoryListAPI.as_view(), name='api_categories'),
@@ -9,7 +8,7 @@ urlpatterns = [
     path('professions/category/<int:category_id>/', api_views.ProfessionByCategoryAPI.as_view(),
          name='api_professions_by_category'),
     path('analytics/stats/', api_views.AnalyticsStatsAPI.as_view(), name='api_analytics'),
-
+    path('auth/avatar/', UserAvatarAPI.as_view(), name='api_avatar'),
     path('auth/register/', RegisterAPI.as_view(), name='api_register'),
     path('auth/login/', LoginAPI.as_view(), name='api_login'),
     path('auth/logout/', LogoutAPI.as_view(), name='api_logout'),

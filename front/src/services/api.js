@@ -115,3 +115,19 @@ export const getCurrentUser = () =>
   fetch(`${API_BASE}/auth/profile/`, {
     headers: getAuthHeaders()
   }).then(handleResponse);
+
+  export const changeAvatar = async (avatarType) => {
+  const response = await fetch(`${API_BASE}/auth/avatar/`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      avatar_type: avatarType
+    }),
+  });
+
+  const data = await handleResponse(response);
+  return data;
+};
