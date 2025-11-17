@@ -5,28 +5,32 @@
 }
 
 .header {
-  background: #1976d2;
-  color: white;
-  padding: 1rem 0;
+  background: #ba55d4;
+  color: #fdc073;
+  padding: 0;
+  height: 60px;
 }
 
 .nav {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0;
+  height: 100%;
 }
 
 .nav a {
-  color: white;
+  color: #fdc073;
   text-decoration: none;
   margin: 0 0.5rem;
+  font-size: 20px;
 }
 
 .nav a:hover {
-  text-decoration: underline;
+  color: #FDA83D;
+  text-decoration: none;
 }
 
 .user-info {
@@ -37,61 +41,79 @@
 
 .logout-btn {
   background: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid #fdc073;
+  color: #fdc073;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .logout-btn:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(253, 192, 115, 0.1);
 }
 
 .main-content {
   display: flex;
   flex: 1;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   width: 100%;
-  padding: 1rem;
+  padding: 0;
 }
 
 .sidebar {
-  width: 200px;
-  padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 8px;
-  margin-right: 2rem;
+  width: 230px;
+  padding: 20px 10px 10px 20px;
+  background: #eee;
+  border-right: 1px solid #ccc;
+  margin-right: 0;
+  border-radius: 0;
 }
 
 .sidebar h3 {
   margin-bottom: 1rem;
-  color: #333;
+  color: #444;
+  font-size: 20px;
 }
 
 .category-link {
   display: block;
   padding: 0.5rem 0;
-  color: #1976d2;
+  color: #444;
   text-decoration: none;
+  font-size: 20px;
 }
 
 .category-link:hover {
-  text-decoration: underline;
+  color: #CC0000;
+  text-decoration: none;
+}
+
+.category-link.selected {
+  color: #0059b2;
 }
 
 .content {
   flex: 1;
-  padding: 1rem;
+  padding: 40px 20px 20px 40px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer {
-  background: #333;
-  color: white;
-  text-align: center;
-  padding: 1rem;
+  background: #eba8ff;
+  color: #aaa;
+  text-align: left;
+  padding: 5px;
   margin-top: auto;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Arial, Helvetica;
+}
+
+.footer a {
+  text-decoration: underline;
+  color: #aaa;
 }
 
 .loading, .error {
@@ -104,5 +126,5 @@
   background: #ffeaea;
   border: 1px solid #ff4444;
   border-radius: 4px;
-  color: #cc0000;
+  color: #CC0000;
 }

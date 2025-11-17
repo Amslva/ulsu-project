@@ -1,6 +1,6 @@
 .analyze-page {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     padding: 40px 20px 20px 40px;
     font-family: 'Arial', sans-serif;
     width: 100%;
@@ -9,31 +9,36 @@
 
 .analyze-page h1 {
     text-align: center;
-    color: #eba8ff;
+    color: #444;
     margin-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 32px;
     font-family: 'Arial', sans-serif;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .chart-card, .trend-card {
     background: white;
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #ccc;
     margin-bottom: 2rem;
     font-family: 'Arial', sans-serif;
 }
 
 .chart-card h2 {
-    font-size: 1.5rem;
+    font-size: 28px;
     margin-bottom: 1.5rem;
-    color: #eba8ff;
-    border-bottom: 2px solid #f0f0f0;
+    color: #777;
+    border-bottom: 1px solid #CC0000;
     padding-bottom: 0.5rem;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
+    font-family: Sans-serif, Arial, Tahoma;
+    font-weight: normal;
+    margin-left: 30px;
+    background: #fff;
+    display: inline-block;
+    padding: 0 10px;
+    margin-top: -16px;
 }
 
 .charts-grid {
@@ -54,23 +59,26 @@
 }
 
 .skill-tag {
-    background: #eba8ff;
-    color: white;
+    background: #3F4137;
+    color: #fdc073;
     padding: 0.6rem 1.2rem;
-    border-radius: 20px;
+    border-radius: 0;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: normal;
     transition: all 0.3s ease;
     cursor: pointer;
     border: none;
-    box-shadow: 0 2px 4px rgba(235, 168, 255, 0.3);
+    box-shadow: none;
     font-family: 'Arial', sans-serif;
+    text-decoration: none;
 }
 
 .skill-tag:hover {
-    background: #d88ce6;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(235, 168, 255, 0.4);
+    background: #333;
+    color: #FDA83D;
+    transform: none;
+    box-shadow: none;
+    text-decoration: none;
 }
 
 .bar-chart {
@@ -95,14 +103,14 @@
 }
 
 .rank {
-    font-weight: 700;
-    color: #eba8ff;
+    font-weight: normal;
+    color: #0059b2;
     min-width: 25px;
     font-family: 'Arial', sans-serif;
 }
 
 .item-name {
-    font-weight: 600;
+    font-weight: normal;
     color: #444;
     flex: 1;
     font-family: 'Arial', sans-serif;
@@ -111,9 +119,9 @@
 .count {
     background: #f0f0f0;
     padding: 6px 10px;
-    border-radius: 12px;
+    border-radius: 0;
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: normal;
     color: #666;
     min-width: 60px;
     text-align: center;
@@ -124,14 +132,14 @@
     flex: 1;
     height: 30px;
     background: #f0f0f0;
-    border-radius: 15px;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
 }
 
 .bar-fill {
     height: 100%;
-    border-radius: 15px;
+    border-radius: 0;
     transition: width 1s ease-in-out;
     position: relative;
     animation: growBar 1.5s ease-out;
@@ -146,7 +154,7 @@
     transform: translateY(-50%);
     color: white;
     font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: normal;
     font-family: 'Arial', sans-serif;
 }
 
@@ -172,7 +180,7 @@
 }
 
 .employment-name, .percentage {
-    font-weight: 600;
+    font-weight: normal;
     color: #444;
     font-family: 'Arial', sans-serif;
 }
@@ -181,14 +189,14 @@
     flex: 1;
     height: 20px;
     background: #f0f0f0;
-    border-radius: 10px;
+    border-radius: 0;
     overflow: hidden;
     position: relative;
 }
 
 .pie-fill {
     height: 100%;
-    border-radius: 10px;
+    border-radius: 0;
     transition: width 1s ease-in-out;
     animation: growBar 1.5s ease-out;
     background: #eba8ff;
@@ -206,7 +214,7 @@
     align-items: center;
     padding: 0.8rem 1rem;
     background: #f0f0f0;
-    border-radius: 6px;
+    border-radius: 0;
     transition: all 0.3s ease;
     font-family: 'Arial', sans-serif;
 }
@@ -217,7 +225,7 @@
 }
 
 .city, .spec-name {
-    font-weight: 600;
+    font-weight: normal;
     color: #444;
     font-family: 'Arial', sans-serif;
 }
@@ -225,10 +233,10 @@
 .vacancy-count, .spec-count {
     background: white;
     padding: 4px 10px;
-    border-radius: 12px;
+    border-radius: 0;
     font-size: 0.85rem;
-    font-weight: 600;
-    color: #eba8ff;
+    font-weight: normal;
+    color: #0059b2;
     font-family: 'Arial', sans-serif;
 }
 
@@ -250,7 +258,7 @@
     align-items: center;
     min-width: 220px;
     font-size: 0.95rem;
-    font-weight: 600;
+    font-weight: normal;
     color: #444;
     font-family: 'Arial', sans-serif;
 }
@@ -259,14 +267,14 @@
     flex: 1;
     height: 25px;
     background: #f0f0f0;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
 }
 
 .exp-fill {
     height: 100%;
     background: #eba8ff;
-    border-radius: 12px;
+    border-radius: 0;
     transition: width 1s ease-in-out;
     animation: growBar 1.5s ease-out;
 }
@@ -274,36 +282,42 @@
 .trend-card {
     background: white !important;
     color: #444;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #ccc;
 }
 
 .trend-card h2 {
-    color: #eba8ff;
-    border-bottom: 2px solid #f0f0f0;
-    font-family: 'Arial', sans-serif;
-    font-weight: bold;
+    color: #777;
+    border-bottom: 1px solid #CC0000;
+    font-family: Sans-serif, Arial, Tahoma;
+    font-weight: normal;
+    margin-left: 30px;
+    background: #fff;
+    display: inline-block;
+    padding: 0 10px;
+    margin-top: -16px;
+    font-size: 28px;
 }
 
 .trend-content p {
-    font-size: 1.1rem;
+    font-size: 20px;
     line-height: 1.6;
     margin-bottom: 1.5rem;
-    color: #444;
-    font-family: 'Arial', sans-serif;
+    color: #000;
+    font-family: Yandex Sans Display Light;
 }
 
 .trend-advice {
-    background: #f0f0f0;
+    background: #eee;
     padding: 1.5rem;
-    border-radius: 6px;
+    border-radius: 0;
     font-family: 'Arial', sans-serif;
 }
 
 .trend-advice h3 {
-    color: #eba8ff;
+    color: #444;
     margin-bottom: 1rem;
     font-family: 'Arial', sans-serif;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .trend-advice ul {
@@ -313,7 +327,7 @@
 
 .trend-advice li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #ccc;
     color: #444;
     font-family: 'Arial', sans-serif;
 }
@@ -323,13 +337,14 @@
 }
 
 .trend-advice a {
-    color: #eba8ff;
+    color: #0059b2;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: normal;
     font-family: 'Arial', sans-serif;
 }
 
 .trend-advice a:hover {
+    color: #CC0000;
     text-decoration: underline;
 }
 
@@ -345,14 +360,14 @@
 }
 
 .error {
-    color: #ff66cc;
+    color: #CC0000;
 }
 
 .no-data-card {
     text-align: center;
     padding: 3rem;
     background: #f0f0f0;
-    border-radius: 8px;
+    border-radius: 0;
     margin: 2rem 0;
     font-family: 'Arial', sans-serif;
 }
@@ -417,6 +432,7 @@
         width: 0% !important;
     }
 }
+
 .simple-pie-chart {
   display: flex;
   align-items: center;
@@ -434,7 +450,7 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: conic-gradient(#4caf50, #ff9800, #9c27b0, #2196f3, #ff5722);
+  background: conic-gradient(#eba8ff, #d88ce6, #c570cc, #b254b3, #9f3899);
 }
 
 .pie-legend {
@@ -453,7 +469,7 @@
 .legend-color {
   width: 12px;
   height: 12px;
-  border-radius: 2px;
+  border-radius: 0;
   flex-shrink: 0;
 }
 
@@ -463,7 +479,7 @@
 }
 
 .legend-percentage {
-  font-weight: 600;
+  font-weight: normal;
   color: #333;
   min-width: 40px;
   text-align: right;
