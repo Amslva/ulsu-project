@@ -7,8 +7,6 @@ import AnalyzePage from './pages/AnalyzePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import './styles/main.css';
-import ChangePasswordPage from './pages/ChangePasswordPage';
-import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -21,8 +19,6 @@ function App() {
           <Route path="/stats" element={<AnalyzePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/change-password" element={<ChangePasswordPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </Router>

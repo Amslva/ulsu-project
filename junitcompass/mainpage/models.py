@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
@@ -38,22 +37,3 @@ class Profession(models.Model):
         verbose_name_plural = 'Специальности'
         ordering = ['-time_create']
         indexes = [models.Index(fields=['-time_create'])]
-
-class UserProfile(models.Model):
-    AVATAR_CHOICES = [
-        ('men', 'Мужская аватарка'),
-        ('girl', 'Женская аватарка'), 
-    ]
-    
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    avatar_type = models.CharField(max_length=10, choices=AVATAR_CHOICES, default='men')
-    
-    def get_avatar_url(self):
-        return f'/avatars/{self.avatar_type}.png'
-    
-    def __str__(self):
-        return f'Профиль {self.user.username}'
-
-    class Meta:
-        verbose_name = 'Профиль пользователя'
-        verbose_name_plural = 'Профили пользователей'
