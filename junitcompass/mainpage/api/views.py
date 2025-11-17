@@ -65,3 +65,21 @@ class AnalyticsStatsAPI(APIView):
             ]
         }
         return Response(data)
+
+class ProfessionDetailAPI(APIView):
+    def get(self, request, slug):
+        try:
+            profession = Profession.objects.get(slug=slug, is_published=True)
+            data = {
+                'id': profession.id,
+                'title': profession.title,
+                'slug': profession.slug,
+                'content': profession.content,  # ← ВОТ КОНТЕНТ!
+                'time_create': profession.time_create,
+                'time_update': profession.time_update,
+                'cat_id': profession.cat_id,
+                'cat_name': profession.cat.name
+            }
+            return Response(data)
+        except Profession.DoesNotExist:
+            return Response({'error': 'Профессия не найдена'}, status=404)

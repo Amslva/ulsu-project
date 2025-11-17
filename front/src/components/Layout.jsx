@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { logout, getCurrentUser } from '../services/api';
 import './Layout.css';
 
-export default function Layout({ children, categories = [] }) {
+export default function Layout({ children, categories = [], showSidebar = true }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -62,39 +62,45 @@ export default function Layout({ children, categories = [] }) {
 
           <div className="user-info">
             {user ? (
-              <>
-                <span>Привет, {getUserName()}!</span>
-                <button onClick={handleLogout} className="logout-btn">
-                  Выйти
-                </button>
-              </>
+              <div className="user-menu">
+                <Link to="/profile" className="profile-link">
+                  {getUserName()}
+                </Link>
+                <div className="user-actions">
+                  <button onClick={handleLogout} className="logout-btn">
+                    Выйти
+                  </button>
+                </div>
+              </div>
             ) : (
-              <>
+              <div className="auth-links">
                 <Link to="/login">Войти</Link>
                 <Link to="/register">Регистрация</Link>
-              </>
+              </div>
             )}
           </div>
         </div>
       </header>
 
       <div className="main-content">
-            <aside className="sidebar">
-              <h3>Категории</h3>
-              <nav>
-                {categories && categories.map(cat => (
-                  <Link
-                    key={cat.id}
-                    to={`/category/${cat.slug}`}
-                    className="category-link"
-                  >
-                    {cat.name}
-                  </Link>
-                ))}
-              </nav>
-            </aside>
-
-        <main className="content">
+        {showSidebar && (
+          <aside className="sidebar">
+            <h3>Категории</h3>
+            <nav>
+              {categories && categories.map(cat => (
+                <Link
+                  key={cat.id}
+                  to={`/category/${cat.slug}`}
+                  className="category-link"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </nav>
+          </aside>
+        )}
+        
+        <main className={`content ${!showSidebar ? 'content-full' : ''}`}>
           {children}
         </main>
       </div>
