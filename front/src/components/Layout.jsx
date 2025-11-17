@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { logout, getCurrentUser } from '../services/api';
-import './Layout.css';
+import '../styles/Layout.css';
 
 export default function Layout({ children, categories = [] }) {
   const [user, setUser] = useState(null);
